@@ -2,8 +2,9 @@
 
 目标：在 OpenWrt U-Boot 布局下把 `ubi` 分区从 64M 扩大到 112M，并将以下插件编进固件：
 
-- `luci-app-openclash`
-- `luci-app-ddnsto`
+-Argon主题
+#- `luci-app-openclash`
+#- `luci-app-ddnsto`
 - 中文语言包
 
 ## 使用方式
