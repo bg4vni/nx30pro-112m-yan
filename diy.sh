@@ -41,7 +41,7 @@ echo 'src-git passwall_dep https://github.com/Openwrt-Passwall/openwrt-passwall-
 echo 'src-git passwall2 https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' >> openwrt/feeds.conf.default
 
 # 3. 添加luci-adguardhome软件源
-echo 'src-git adguardhome https://github.com/kenzok8/openwrt-packages.git;main' >> openwrt/feeds.conf.default
+echo 'src-git adguardhome https://github.com/kenzok8/openwrt-packages.git;master' >> openwrt/feeds.conf.default
 
 #cat >> openwrt/feeds.conf.default <<'EOF'
 #src-git openclash https://github.com/vernesong/OpenClash.git
