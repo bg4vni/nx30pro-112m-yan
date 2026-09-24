@@ -26,7 +26,6 @@ define Device/h3c_magic-nx30-pro-112m
   IMAGE/sysupgrade.itb := append-kernel | \
         fit gzip $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb external-static-with-rootfs | append-metadata
   DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware
-  #DEVICE_PACKAGES := kmod-conninfra kmod-mt_wifi kmod-warp wifi-profile luci-app-mtwifi luci-app-turboacc-mtk
 endef
 TARGET_DEVICES += h3c_magic-nx30-pro-112m
 EOF
