@@ -30,26 +30,17 @@ endef
 TARGET_DEVICES += h3c_magic-nx30-pro-112m
 EOF
 
-# 1. 彻底删除开源 mt76 驱动源码，防止包名冲突
-rm -rf openwrt/package/kernel/mt76
-
-# 2. 克隆 padavanonly 的 MTK 闭源无线驱动组件到 package/mtk 目录
-git clone --depth=1 https://github.com/padavanonly/immortalwrt-mt798x-6.6 -b openwrt-24.10-6.6 /tmp/immortalwrt-mt798x
-mkdir -p openwrt/package/mtk
-cp -r /tmp/immortalwrt-mt798x/package/mtk/* openwrt/package/mtk/
-rm -rf /tmp/immortalwrt-mt798x
-
-#3. 将默认IP修改为192.168.100.1
+# 1. 将默认IP修改为192.168.100.1
 sed -i 's/192.168.1.1/192.168.100.1/g' openwrt/package/base-files/files/bin/config_generate
 
-# 4. 添加 Nikki 官方软件源
+# 2. 添加 Nikki 官方软件源
 echo 'src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main' >> openwrt/feeds.conf.default
 
-# 5. 添加 PassWall 2 官方源（通过 feeds 机制拉取，会自动匹配系统依赖）
+# 3. 添加 PassWall 2 官方源（通过 feeds 机制拉取，会自动匹配系统依赖）
 echo 'src-git passwall_dep https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' >> openwrt/feeds.conf.default
 echo 'src-git passwall2 https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' >> openwrt/feeds.conf.default
 
-# 6. 添加luci-adguardhome软件源
+# 4. 添加luci-adguardhome软件源
 echo 'src-git adguardhome https://github.com/kenzok8/openwrt-packages.git;master' >> openwrt/feeds.conf.default
 
 
