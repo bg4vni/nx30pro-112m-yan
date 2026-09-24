@@ -43,6 +43,15 @@ echo 'src-git passwall2 https://github.com/Openwrt-Passwall/openwrt-passwall2.gi
 # 3. 添加luci-adguardhome软件源
 echo 'src-git adguardhome https://github.com/kenzok8/openwrt-packages.git;master' >> openwrt/feeds.conf.default
 
+# 4.1 彻底删除开源 mt76 驱动（防止与闭源无线驱动冲突）
+rm -rf package/kernel/mt76
+
+# 4.2 克隆 padavanonly 的 MTK 798x 闭源无线驱动软件包到 package/mtk 目录
+git clone --depth=1 https://github.com/padavanonly/immortalwrt-mt798x-6.6 -b openwrt-24.10-6.6 /tmp/immortalwrt-mt798x
+mkdir -p package/mtk
+cp -r /tmp/immortalwrt-mt798x/package/mtk/* package/mtk/
+rm -rf /tmp/immortalwrt-mt798x
+
 #cat >> openwrt/feeds.conf.default <<'EOF'
 #src-git openclash https://github.com/vernesong/OpenClash.git
 #src-git ddnsto https://github.com/linkease/ddnsto-openwrt.git
